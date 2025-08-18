@@ -1,0 +1,1553 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sohaib Atef | Data Analyst</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        @import url("http://www.fontstatic.com/f=jazeera,jazeera-light");
+
+        :root {
+            --primary: #8b7355;
+            --primary-light: #b9a590;
+            --light: #f5f1eb;
+            --dark: #2c2c2c;
+            --beige: #e8e4de;
+            --white: #ffffff;
+            --shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            --transition: all 0.3s ease;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: jazeera, dubai, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background: var(--light);
+            color: var(--dark);
+            line-height: 1.6;
+            overflow-x: hidden;
+            transition: var(--transition);
+        }
+
+        body.rtl {
+            direction: rtl;
+        }
+
+        body.ltr {
+            direction: ltr;
+        }
+
+        /* Language Switcher */
+        .language-switcher {
+            position: fixed;
+            top: 100px;
+            right: 20px;
+            z-index: 1001;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 50px;
+            padding: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .lang-btn {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: var(--white);
+            border: 2px solid var(--primary-light);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .lang-btn:hover, .lang-btn.active {
+            background: var(--primary);
+            color: var(--white);
+            transform: scale(1.1);
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            padding: 1rem;
+            background: var(--primary-light);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            transition: var(--transition);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        nav.scrolled {
+            box-shadow: 0 4px 12px rgba(139, 115, 85, 0.3);
+            background: rgba(185, 165, 144, 0.95);
+        }
+
+        .logo img {
+            width: 100px;
+            height: auto;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            color: var(--dark);
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: var(--transition);
+            padding: 0.5rem;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary);
+        }
+
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            color: var(--dark);
+            cursor: pointer;
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            align-items: center;
+            width: 100%;
+            margin: 0 auto;
+            gap: 4rem;
+            padding: 0 40px;
+            background-color: var(--primary-light);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-image {
+            position: relative;
+            height: 80%;
+            border-radius: 20px;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: var(--shadow);
+        }
+
+        .hero-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center;
+            display: block;
+        }
+
+        .hero-image::after {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.1));
+        }
+
+        .hero-content {
+            z-index: 2;
+        }
+
+        .hero-subtitle {
+            font-size: 1rem;
+            color: var(--dark);
+            font-weight: 500;
+            letter-spacing: 2px;
+            display: inline-block;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            font-weight: 900;
+            line-height: 1.2;
+            color: var(--dark);
+        }
+
+        .hero-description {
+            font-size: 1.1rem;
+            color: var(--dark);
+            margin-bottom: 3rem;
+            line-height: 1.7;
+            max-width: 500px;
+        }
+
+        .cta-button {
+            display: inline-block;
+            padding: 1rem 2.5rem;
+            background: var(--dark);
+            color: var(--white);
+            text-decoration: none;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-size: 0.9rem;
+            border-radius: 30px;
+            transition: var(--transition);
+            border: 2px solid var(--dark);
+        }
+
+        .cta-button:hover {
+            background: transparent;
+            color: var(--dark);
+            transform: translateY(-3px);
+        }
+
+        /* Section Styling */
+        .section {
+            padding: 6rem 0;
+        }
+
+        .section-light {
+            background: var(--light);
+        }
+
+        .section-dark {
+            background: var(--primary);
+            color: var(--white);
+        }
+
+        .section-beige {
+            background: var(--beige);
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            font-weight: 900;
+            text-align: center;
+            margin-bottom: 1rem;
+            position: relative;
+            padding-bottom: 1rem;
+        }
+
+        .section-title::after {
+            content: "";
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background: var(--primary);
+        }
+
+        .section-dark .section-title::after {
+            background: var(--light);
+        }
+
+        .section-subtitle {
+            text-align: center;
+            font-size: 1.1rem;
+            color: #666;
+            margin-bottom: 4rem;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+            padding: 0 2rem;
+        }
+
+        .section-dark .section-subtitle {
+            color: rgba(255, 255, 255, 0.8);
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        /* Chat Section */
+        .chat-section {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .chat-image {
+            aspect-ratio: 4/3;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+        }
+
+        .chat-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        .chat-content h2 {
+            font-size: 2.2rem;
+            font-weight: 900;
+            margin-bottom: 1.5rem;
+            line-height: 1.3;
+        }
+
+        .chat-content p {
+            font-size: 1rem;
+            line-height: 1.8;
+            margin-bottom: 1.5rem;
+        }
+
+        /* Skills Section */
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .skill-card {
+            background: var(--white);
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            text-align: center;
+            padding: 2rem;
+        }
+
+        .skill-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+        }
+
+        .skill-icon {
+            font-size: 3rem;
+            color: var(--primary);
+            margin-bottom: 1.5rem;
+        }
+
+        .skill-title {
+            font-size: 1.3rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+
+        .skill-description {
+            color: #666;
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+
+        /* About Section */
+        .about-section {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .about-image {
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+        }
+
+        .about-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        .about-content h2 {
+            font-size: 2.5rem;
+            font-weight: 900;
+            margin-bottom: 2rem;
+        }
+
+        .about-content p {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            margin-bottom: 1.5rem;
+        }
+
+        .highlight {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 1.5rem;
+            border-radius: 10px;
+            margin: 2rem 0;
+            border-left: 4px solid var(--light);
+        }
+
+        /* Projects Section */
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .project-card {
+            background: var(--white);
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+        }
+
+        .project-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+        }
+
+        .project-image {
+            height: 250px;
+            overflow: hidden;
+        }
+
+        .project-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .project-card:hover .project-image img {
+            transform: scale(1.05);
+        }
+
+        .project-content {
+            padding: 1.5rem;
+        }
+
+        .project-title {
+            font-size: 1.3rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+        }
+
+        .project-description {
+            color: #666;
+            font-size: 0.95rem;
+            line-height: 1.6;
+            margin-bottom: 1.5rem;
+        }
+
+        .project-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+
+        .project-tag {
+            background: var(--beige);
+            color: var(--primary);
+            padding: 0.3rem 1rem;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 500;
+        }
+
+        /* Testimonials */
+        .testimonials {
+            background: url('https://images.unsplash.com/photo-1497366754035-f200968a6e72?q=80&w=2070&auto=format&fit=crop') center/cover;
+            position: relative;
+            padding: 6rem 0;
+            text-align: center;
+        }
+
+        .testimonials::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(139, 115, 85, 0.9);
+        }
+
+        .testimonial-content {
+            position: relative;
+            z-index: 2;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .testimonial-content .section-title {
+            color: var(--white);
+        }
+
+        .testimonial-content .section-title::after {
+            background: var(--light);
+        }
+
+        .testimonial-card {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 2rem;
+            margin: 2rem 0;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .testimonial-text {
+            font-size: 1.1rem;
+            font-style: italic;
+            line-height: 1.8;
+            margin-bottom: 1.5rem;
+            color: var(--white);
+        }
+
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 1rem;
+        }
+
+        .author-avatar {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            overflow: hidden;
+            border: 2px solid var(--light);
+        }
+
+        .author-avatar img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .author-info h4 {
+            color: var(--white);
+            font-weight: 600;
+            margin-bottom: 0.2rem;
+        }
+
+        .author-info p {
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 0.9rem;
+        }
+
+        /* Contact Section */
+        .contact-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .contact-info {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 1rem;
+        }
+
+        .contact-icon {
+            width: 50px;
+            height: 50px;
+            background: var(--primary-light);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            color: var(--dark);
+        }
+
+        .contact-details h3 {
+            font-size: 1.2rem;
+            margin-bottom: 0.3rem;
+        }
+
+        .contact-details p {
+            color: #666;
+        }
+
+        .contact-form {
+            background: var(--white);
+            border-radius: 20px;
+            padding: 2rem;
+            box-shadow: var(--shadow);
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 1rem;
+            border: 1px solid #ddd;
+            border-radius: 10px;
+            font-size: 1rem;
+            transition: var(--transition);
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus {
+            border-color: var(--primary);
+            outline: none;
+            box-shadow: 0 0 0 3px rgba(139, 115, 85, 0.2);
+        }
+
+        .form-group textarea {
+            min-height: 150px;
+            resize: vertical;
+        }
+
+        /* Footer */
+        footer {
+            background: var(--dark);
+            color: var(--white);
+            padding: 4rem 0 2rem;
+        }
+
+        .footer-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        .footer-col h3 {
+            font-size: 1.3rem;
+            margin-bottom: 1.5rem;
+            position: relative;
+            padding-bottom: 0.5rem;
+        }
+
+        .footer-col h3::after {
+            content: "";
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 50px;
+            height: 2px;
+            background: var(--primary);
+        }
+
+        .footer-col p {
+            color: rgba(255, 255, 255, 0.7);
+            line-height: 1.8;
+            margin-bottom: 1rem;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1.5rem;
+        }
+
+        .social-links a {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--white);
+            transition: var(--transition);
+        }
+
+        .social-links a:hover {
+            background: var(--primary);
+            transform: translateY(-3px);
+        }
+
+        .footer-col ul {
+            list-style: none;
+        }
+
+        .footer-col ul li {
+            margin-bottom: 0.8rem;
+        }
+
+        .footer-col ul li a {
+            color: rgba(255, 255, 255, 0.7);
+            text-decoration: none;
+            transition: var(--transition);
+            display: block;
+        }
+
+        .footer-col ul li a:hover {
+            color: var(--primary);
+            padding-left: 5px;
+        }
+
+        .newsletter-form {
+            display: flex;
+            gap: 0.5rem;
+            margin-top: 1.5rem;
+        }
+
+        .newsletter-form input {
+            flex: 1;
+            padding: 0.8rem;
+            border: none;
+            border-radius: 30px;
+            font-size: 1rem;
+        }
+
+        .newsletter-form button {
+            padding: 0.8rem 1.5rem;
+            background: var(--primary);
+            color: var(--white);
+            border: none;
+            border-radius: 30px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .newsletter-form button:hover {
+            background: var(--primary-light);
+        }
+
+        .copyright {
+            text-align: center;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: rgba(255, 255, 255, 0.5);
+            font-size: 0.9rem;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 992px) {
+            .hero {
+                grid-template-columns: 1fr;
+                padding: 120px 20px 60px;
+                text-align: center;
+            }
+            
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+            
+            .hero-image {
+                height: 400px;
+                order: -1;
+            }
+            
+            .hero-description {
+                margin-left: auto;
+                margin-right: auto;
+            }
+            
+            .chat-section,
+            .about-section,
+            .contact-container {
+                grid-template-columns: 1fr;
+                gap: 3rem;
+            }
+            
+            .mobile-menu-btn {
+                display: block;
+            }
+            
+            .nav-links {
+                position: fixed;
+                top: 70px;
+                left: 0;
+                width: 100%;
+                background: var(--primary-light);
+                flex-direction: column;
+                align-items: center;
+                padding: 2rem 0;
+                clip-path: polygon(0 0, 100% 0, 100% 0, 0 0);
+                transition: var(--transition);
+            }
+            
+            .nav-links.active {
+                clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .section-title {
+                font-size: 2rem;
+            }
+            
+            .section {
+                padding: 4rem 0;
+            }
+            
+            .hero h1 {
+                font-size: 2rem;
+            }
+            
+            .language-switcher {
+                top: 80px;
+                right: 10px;
+                flex-direction: row;
+                border-radius: 30px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero {
+                padding: 100px 15px 40px;
+            }
+            
+            .hero h1 {
+                font-size: 1.8rem;
+            }
+            
+            .cta-button {
+                width: 100%;
+                text-align: center;
+            }
+        }
+
+        /* Smooth Scrolling */
+        html {
+            scroll-behavior: smooth;
+        }
+    </style>
+</head>
+<body class="rtl">
+    <!-- Language Switcher -->
+    <div class="language-switcher">
+        <button class="lang-btn active" data-lang="ar">ع</button>
+        <button class="lang-btn" data-lang="en">EN</button>
+        <button class="lang-btn" data-lang="zh">中</button>
+    </div>
+
+    <!-- Navigation -->
+    <nav id="navbar">
+        <div class="logo">
+            <img src="93a83cc264f115ec4ebbe19dcf8324a9.png" alt="SOHAIB ATEF">
+        </div>
+        
+        <ul class="nav-links">
+            <li><a href="#home" data-translate="home">الرئيسية</a></li>
+            <li><a href="#about" data-translate="about">عني</a></li>
+            <li><a href="#skills" data-translate="skills">المهارات</a></li>
+            <li><a href="#projects" data-translate="projects">المشاريع</a></li>
+            <li><a href="#contact" data-translate="contact">اتصل بي</a></li>
+        </ul>
+        
+        <button class="mobile-menu-btn">
+            <i class="fas fa-bars"></i>
+        </button>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="hero-content">
+            <span class="hero-subtitle" data-translate="hello">مرحباً، أنا</span>
+            <h2 data-translate="name">صهيب عاطف</h2>
+            <h1 data-translate="slogan">بياناتك تحكي قصة - وأنا أساعدك على روايتها!</h1>
+            <p class="hero-description" data-translate="hero_desc">
+                أخصائي تحليل بيانات يساعد الشركات على اكتشاف القصص المخفية في بياناتهم وتحويلها إلى رؤى قابلة للتنفيذ.
+            </p>
+            <a href="#contact" class="cta-button" data-translate="cta">أبدأ مشروعك</a>
+        </div>
+        <div class="hero-image">
+            <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=2070&auto=format&fit=crop" alt="صهيب عاطف">
+        </div>
+    </section>
+
+    <!-- Chat Section -->
+    <section class="section section-light">
+        <div class="container">
+            <div class="chat-section">
+                <div class="chat-image">
+                    <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=2070&auto=format&fit=crop" alt="استشارة مجانية">
+                </div>
+                <div class="chat-content">
+                    <h2 data-translate="chat_title">حدد موعداً للمشاورة المجانية</h2>
+                    <p data-translate="chat_desc">
+                        هل أنت مستعد لتحويل بياناتك إلى رؤى قابلة للتنفيذ؟ دعنا نناقش كيف يمكنني مساعدتك في اتخاذ قرارات مدعومة بالبيانات تدفع عملك إلى الأمام.
+                    </p>
+                    <a href="#contact" class="cta-button" data-translate="book_consultation">احجز استشارة</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills" class="section section-beige">
+        <div class="container">
+            <h2 class="section-title" data-translate="skills_title">المهارات والخبرات</h2>
+            <p class="section-subtitle" data-translate="skills_subtitle">أبرز المهارات والخبرات التي أقدمها لتحويل بياناتك إلى رؤى قيمة</p>
+            
+            <div class="skills-grid">
+                <div class="skill-card">
+                    <div class="skill-icon">
+                        <i class="fas fa-chart-line"></i>
+                    </div>
+                    <h3 class="skill-title" data-translate="skill1_title">تحليل البيانات</h3>
+                    <p class="skill-description" data-translate="skill1_desc">
+                        تحليل متقدم للبيانات باستخدام أحدث الأدوات والتقنيات لاستخراج الرؤى المخفية في بياناتك.
+                    </p>
+                </div>
+                
+                <div class="skill-card">
+                    <div class="skill-icon">
+                        <i class="fas fa-database"></i>
+                    </div>
+                    <h3 class="skill-title" data-translate="skill2_title">تنظيف البيانات</h3>
+                    <p class="skill-description" data-translate="skill2_desc">
+                        تنظيف وتجهيز البيانات الخام لضمان دقتها وموثوقيتها قبل عملية التحليل.
+                    </p>
+                </div>
+                
+                <div class="skill-card">
+                    <div class="skill-icon">
+                        <i class="fas fa-chart-bar"></i>
+                    </div>
+                    <h3 class="skill-title" data-translate="skill3_title">تصور البيانات</h3>
+                    <p class="skill-description" data-translate="skill3_desc">
+                        تصميم لوحات تحكم تفاعلية وتقارير مرئية تجعل البيانات سهلة الفهم والاستخدام.
+                    </p>
+                </div>
+                
+                <div class="skill-card">
+                    <div class="skill-icon">
+                        <i class="fas fa-lightbulb"></i>
+                    </div>
+                    <h3 class="skill-title" data-translate="skill4_title">الذكاء الاصطناعي</h3>
+                    <p class="skill-description" data-translate="skill4_desc">
+                        تطبيق تقنيات الذكاء الاصطناعي والتعلم الآلي للتنبؤ بالاتجاهات المستقبلية.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="section section-dark">
+        <div class="container">
+            <div class="about-section">
+                <div class="about-image">
+                    <img src="WhatsApp Image 2024-07-17 at 16.10.50_cb0a49cf.jpg" alt="صهيب عاطف">
+                </div>
+                <div class="about-content">
+                    <h2 class="section-title" data-translate="about_title">من أنا</h2>
+                    <p data-translate="about_desc1">
+                        أنا صهيب عاطف، محترف بيانات يمتلك شغفًا لتحويل البيانات المعقدة إلى رؤى واضحة وقابلة للتنفيذ. مع خبرة تزيد عن 5 سنوات في مجال تحليل البيانات وتصورها، أساعد الشركات على اتخاذ قرارات مدعومة بالبيانات.
+                    </p>
+                    <p data-translate="about_desc2">
+                        تخرجت بدرجة البكالوريوس في علوم الحاسب، وتخصصت في تحليل البيانات والذكاء الاصطناعي. عملت مع شركات متنوعة في قطاعات التجزئة، والرعاية الصحية، والتكنولوجيا، مما وفر لي رؤية شاملة لاحتياجات الأعمال المختلفة.
+                    </p>
+                    <div class="highlight">
+                        <p data-translate="about_quote">
+                            "بياناتك تحكي قصة، مهمتي هي مساعدتك على سماعها وفهمها لاتخاذ قرارات أفضل."
+                        </p>
+                    </div>
+                    <a href="#projects" class="cta-button" data-translate="view_projects">عرض المشاريع</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects" class="section section-light">
+        <div class="container">
+            <h2 class="section-title" data-translate="projects_title">المشاريع الحديثة</h2>
+            <p class="section-subtitle" data-translate="projects_subtitle">أحدث أعمالي في تحليل البيانات وتصورها</p>
+            
+            <div class="projects-grid">
+                <div class="project-card">
+                    <div class="project-image">
+                        <img src="Final Dashboard.png" alt="لوحة تحكم المبيعات">
+                    </div>
+                    <div class="project-content">
+                        <h3 class="project-title" data-translate="project1_title">لوحة تحكم المبيعات</h3>
+                        <p class="project-description" data-translate="project1_desc">
+                            لوحة تحكم شاملة في Power BI تحلل أداء المبيعات عبر المناطق وطرق الدفع وفئات المنتجات مع تصورات تفاعلية.
+                        </p>
+                        <div class="project-tags">
+                            <span class="project-tag">Power BI</span>
+                            <span class="project-tag">DAX</span>
+                            <span class="project-tag" data-translate="data_modeling">نمذجة البيانات</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="project-card">
+                    <div class="project-image">
+                        <img src="Pivot table copy.png" alt="تقرير العملاء">
+                    </div>
+                    <div class="project-content">
+                        <h3 class="project-title" data-translate="project2_title">تقرير تحليل العملاء</h3>
+                        <p class="project-description" data-translate="project2_desc">
+                            تحليل متقدم في Excel لتحديد أفضل العملاء حسب سلوك الشراء، مع جداول محورية ديناميكية ورسوم بيانية تفاعلية.
+                        </p>
+                        <div class="project-tags">
+                            <span class="project-tag">Excel</span>
+                            <span class="project-tag" data-translate="pivot_tables">جداول محورية</span>
+                            <span class="project-tag" data-translate="customer_analytics">تحليل العملاء</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="project-card">
+                    <div class="project-image">
+                        <img src="Power Query Applied Steps.png" alt="تنظيف البيانات">
+                    </div>
+                    <div class="project-content">
+                        <h3 class="project-title" data-translate="project3_title">مشروع تنظيف البيانات</h3>
+                        <p class="project-description" data-translate="project3_desc">
+                            مشروع شامل لتنظيف وتحويل البيانات باستخدام Power Query لتنظيم مجموعات البيانات الأولية وإعدادها للتحليل.
+                        </p>
+                        <div class="project-tags">
+                            <span class="project-tag">Power Query</span>
+                            <span class="project-tag" data-translate="data_cleaning">تنظيف البيانات</span>
+                            <span class="project-tag">ETL</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials -->
+    <section class="testimonials">
+        <div class="testimonial-content">
+            <h2 class="section-title" data-translate="testimonials_title">آراء العملاء</h2>
+            <p class="section-subtitle" data-translate="testimonials_subtitle">ما يقوله العملاء عن تجربتهم معي</p>
+            
+            <div class="testimonial-card">
+                <p class="testimonial-text" data-translate="testimonial1">
+                    "عمل صهيب معنا على تحليل بيانات المبيعات كان استثنائيًا. لوحات التحكم التي أنشأها ساعدتنا على تحديد فرص نمو جديدة وزيادة الإيرادات بنسبة 25% في الربع الأول."
+                </p>
+                <div class="testimonial-author">
+                    <div class="author-avatar">
+                        <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="محمد السيد">
+                    </div>
+                    <div class="author-info">
+                        <h4 data-translate="client1_name">محمد السيد</h4>
+                        <p data-translate="client1_position">مدير المبيعات، شركة التقنية المتقدمة</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="testimonial-card">
+                <p class="testimonial-text" data-translate="testimonial2">
+                    "التقارير الشهرية التي يعدها صهيب لنا غيرت طريقة اتخاذنا للقرارات. التحليلات الدقيقة والتصورات الواضحة جعلت البيانات مفهومة للجميع في الفريق."
+                </p>
+                <div class="testimonial-author">
+                    <div class="author-avatar">
+                        <img src="https://randomuser.me/api/portraits/women/44.jpg" alt="سارة عبد الله">
+                    </div>
+                    <div class="author-info">
+                        <h4 data-translate="client2_name">سارة عبد الله</h4>
+                        <p data-translate="client2_position">مديرة التسويق، مجموعة التجارة الإلكترونية</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="section">
+        <div class="container">
+            <h2 class="section-title" data-translate="contact_title">تواصل معي</h2>
+            <p class="section-subtitle" data-translate="contact_subtitle">هل أنت مستعد لبدء مشروعك؟ تواصل معي اليوم</p>
+            
+            <div class="contact-container">
+                <div class="contact-info">
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <i class="fas fa-map-marker-alt"></i>
+                        </div>
+                        <div class="contact-details">
+                            <h3 data-translate="address_title">العنوان</h3>
+                            <p data-translate="address">القاهرة، مصر</p>
+                        </div>
+                    </div>
+                    
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <i class="fas fa-phone-alt"></i>
+                        </div>
+                        <div class="contact-details">
+                            <h3 data-translate="phone_title">الهاتف</h3>
+                            <p>+20 123 456 7890</p>
+                        </div>
+                    </div>
+                    
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <i class="fas fa-envelope"></i>
+                        </div>
+                        <div class="contact-details">
+                            <h3 data-translate="email_title">البريد الإلكتروني</h3>
+                            <p>sohaib.atef@example.com</p>
+                        </div>
+                    </div>
+                    
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <i class="fab fa-linkedin-in"></i>
+                        </div>
+                        <div class="contact-details">
+                            <h3>LinkedIn</h3>
+                            <p>linkedin.com/in/sohaibatef</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="contact-form">
+                    <form id="contactForm">
+                        <div class="form-group">
+                            <label for="name" data-translate="form_name">الاسم الكامل</label>
+                            <input type="text" id="name" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="email" data-translate="form_email">البريد الإلكتروني</label>
+                            <input type="email" id="email" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="subject" data-translate="form_subject">الموضوع</label>
+                            <input type="text" id="subject" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="message" data-translate="form_message">الرسالة</label>
+                            <textarea id="message" required></textarea>
+                        </div>
+                        
+                        <button type="submit" class="cta-button" data-translate="form_submit">إرسال الرسالة</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-container">
+                <div class="footer-col">
+                    <h3 data-translate="footer_about">عن صهيب عاطف</h3>
+                    <p data-translate="footer_about_desc">
+                        أخصائي تحليل بيانات يساعد الشركات على اكتشاف الرؤى المخفية في بياناتهم وتحويلها إلى قرارات تجارية فعالة.
+                    </p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-github"></i></a>
+                    </div>
+                </div>
+                
+                <div class="footer-col">
+                    <h3 data-translate="footer_links">روابط سريعة</h3>
+                    <ul>
+                        <li><a href="#home" data-translate="home">الرئيسية</a></li>
+                        <li><a href="#about" data-translate="about">عني</a></li>
+                        <li><a href="#skills" data-translate="skills">المهارات</a></li>
+                        <li><a href="#projects" data-translate="projects">المشاريع</a></li>
+                        <li><a href="#contact" data-translate="contact">اتصل بي</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-col">
+                    <h3 data-translate="footer_services">الخدمات</h3>
+                    <ul>
+                        <li><a href="#" data-translate="service1">تحليل البيانات</a></li>
+                        <li><a href="#" data-translate="service2">تصور البيانات</a></li>
+                        <li><a href="#" data-translate="service3">تنظيف البيانات</a></li>
+                        <li><a href="#" data-translate="service4">لوحات التحكم</a></li>
+                        <li><a href="#" data-translate="service5">التقارير الشهرية</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-col">
+                    <h3 data-translate="footer_newsletter">النشرة الإخبارية</h3>
+                    <p data-translate="newsletter_desc">
+                        اشترك في نشرتنا الإخبارية لتصلك أحدث مقالات ومستجدات عالم تحليل البيانات.
+                    </p>
+                    <div class="newsletter-form">
+                        <input type="email" placeholder="بريدك الإلكتروني" data-translate="email_placeholder">
+                        <button data-translate="subscribe">اشتراك</button>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="copyright">
+                <p>&copy; <span data-translate="copyright">2025 صهيب عاطف. جميع الحقوق محفوظة.</span></p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Language Translation System
+        const translations = {
+            ar: {
+                home: "الرئيسية",
+                about: "عني",
+                skills: "المهارات",
+                projects: "المشاريع",
+                contact: "اتصل بي",
+                hello: "مرحباً، أنا",
+                name: "صهيب عاطف",
+                slogan: "بياناتك تحكي قصة - وأنا أساعدك على روايتها!",
+                hero_desc: "أخصائي تحليل بيانات يساعد الشركات على اكتشاف القصص المخفية في بياناتهم وتحويلها إلى رؤى قابلة للتنفيذ.",
+                cta: "أبدأ مشروعك",
+                chat_title: "حدد موعداً للمشاورة المجانية",
+                chat_desc: "هل أنت مستعد لتحويل بياناتك إلى رؤى قابلة للتنفيذ؟ دعنا نناقش كيف يمكنني مساعدتك في اتخاذ قرارات مدعومة بالبيانات تدفع عملك إلى الأمام.",
+                book_consultation: "احجز استشارة",
+                skills_title: "المهارات والخبرات",
+                skills_subtitle: "أبرز المهارات والخبرات التي أقدمها لتحويل بياناتك إلى رؤى قيمة",
+                skill1_title: "تحليل البيانات",
+                skill1_desc: "تحليل متقدم للبيانات باستخدام أحدث الأدوات والتقنيات لاستخراج الرؤى المخفية في بياناتك.",
+                skill2_title: "تنظيف البيانات",
+                skill2_desc: "تنظيف وتجهيز البيانات الخام لضمان دقتها وموثوقيتها قبل عملية التحليل.",
+                skill3_title: "تصور البيانات",
+                skill3_desc: "تصميم لوحات تحكم تفاعلية وتقارير مرئية تجعل البيانات سهلة الفهم والاستخدام.",
+                skill4_title: "الذكاء الاصطناعي",
+                skill4_desc: "تطبيق تقنيات الذكاء الاصطناعي والتعلم الآلي للتنبؤ بالاتجاهات المستقبلية.",
+                about_title: "من أنا",
+                about_desc1: "أنا صهيب عاطف، محترف بيانات يمتلك شغفًا لتحويل البيانات المعقدة إلى رؤى واضحة وقابلة للتنفيذ. مع خبرة تزيد عن 5 سنوات في مجال تحليل البيانات وتصورها، أساعد الشركات على اتخاذ قرارات مدعومة بالبيانات.",
+                about_desc2: "تخرجت بدرجة البكالوريوس في علوم الحاسب، وتخصصت في تحليل البيانات والذكاء الاصطناعي. عملت مع شركات متنوعة في قطاعات التجزئة، والرعاية الصحية، والتكنولوجيا، مما وفر لي رؤية شاملة لاحتياجات الأعمال المختلفة.",
+                about_quote: '"بياناتك تحكي قصة، مهمتي هي مساعدتك على سماعها وفهمها لاتخاذ قرارات أفضل."',
+                view_projects: "عرض المشاريع",
+                projects_title: "المشاريع الحديثة",
+                projects_subtitle: "أحدث أعمالي في تحليل البيانات وتصورها",
+                project1_title: "لوحة تحكم المبيعات",
+                project1_desc: "لوحة تحكم شاملة في Power BI تحلل أداء المبيعات عبر المناطق وطرق الدفع وفئات المنتجات مع تصورات تفاعلية.",
+                project2_title: "تقرير تحليل العملاء",
+                project2_desc: "تحليل متقدم في Excel لتحديد أفضل العملاء حسب سلوك الشراء، مع جداول محورية ديناميكية ورسوم بيانية تفاعلية.",
+                project3_title: "مشروع تنظيف البيانات",
+                project3_desc: "مشروع شامل لتنظيف وتحويل البيانات باستخدام Power Query لتنظيم مجموعات البيانات الأولية وإعدادها للتحليل.",
+                data_modeling: "نمذجة البيانات",
+                pivot_tables: "جداول محورية",
+                customer_analytics: "تحليل العملاء",
+                data_cleaning: "تنظيف البيانات",
+                testimonials_title: "آراء العملاء",
+                testimonials_subtitle: "ما يقوله العملاء عن تجربتهم معي",
+                testimonial1: '"عمل صهيب معنا على تحليل بيانات المبيعات كان استثنائيًا. لوحات التحكم التي أنشأها ساعدتنا على تحديد فرص نمو جديدة وزيادة الإيرادات بنسبة 25% في الربع الأول."',
+                testimonial2: '"التقارير الشهرية التي يعدها صهيب لنا غيرت طريقة اتخاذنا للقرارات. التحليلات الدقيقة والتصورات الواضحة جعلت البيانات مفهومة للجميع في الفريق."',
+                client1_name: "محمد السيد",
+                client1_position: "مدير المبيعات، شركة التقنية المتقدمة",
+                client2_name: "سارة عبد الله",
+                client2_position: "مديرة التسويق، مجموعة التجارة الإلكترونية",
+                contact_title: "تواصل معي",
+                contact_subtitle: "هل أنت مستعد لبدء مشروعك؟ تواصل معي اليوم",
+                address_title: "العنوان",
+                address: "القاهرة، مصر",
+                phone_title: "الهاتف",
+                email_title: "البريد الإلكتروني",
+                form_name: "الاسم الكامل",
+                form_email: "البريد الإلكتروني",
+                form_subject: "الموضوع",
+                form_message: "الرسالة",
+                form_submit: "إرسال الرسالة",
+                footer_about: "عن صهيب عاطف",
+                footer_about_desc: "أخصائي تحليل بيانات يساعد الشركات على اكتشاف الرؤى المخفية في بياناتهم وتحويلها إلى قرارات تجارية فعالة.",
+                footer_links: "روابط سريعة",
+                footer_services: "الخدمات",
+                service1: "تحليل البيانات",
+                service2: "تصور البيانات",
+                service3: "تنظيف البيانات",
+                service4: "لوحات التحكم",
+                service5: "التقارير الشهرية",
+                footer_newsletter: "النشرة الإخبارية",
+                newsletter_desc: "اشترك في نشرتنا الإخبارية لتصلك أحدث مقالات ومستجدات عالم تحليل البيانات.",
+                email_placeholder: "بريدك الإلكتروني",
+                subscribe: "اشتراك",
+                copyright: "2025 صهيب عاطف. جميع الحقوق محفوظة."
+            },
+            en: {
+                home: "Home",
+                about: "About",
+                skills: "Skills",
+                projects: "Projects",
+                contact: "Contact",
+                hello: "Howdy, This is",
+                name: "SOHAIB ATEF",
+                slogan: "Your Data Tells a Story — I Help You Bring It to Life!",
+                hero_desc: "A data analyst helping businesses uncover hidden stories in their data and transform them into actionable insights.",
+                cta: "Start Your Project",
+                chat_title: "Set Up A Complimentary Chat",
+                chat_desc: "Ready to transform your data into actionable insights? Let's discuss how I can help you make data-driven decisions that propel your business forward.",
+                book_consultation: "Book Consultation",
+                skills_title: "Skills & Expertise",
+                skills_subtitle: "Key skills and expertise I offer to transform your data into valuable insights",
+                skill1_title: "Data Analysis",
+                skill1_desc: "Advanced data analysis using the latest tools and techniques to extract hidden insights from your data.",
+                skill2_title: "Data Cleaning",
+                skill2_desc: "Cleaning and preparing raw data to ensure its accuracy and reliability before analysis.",
+                skill3_title: "Data Visualization",
+                skill3_desc: "Designing interactive dashboards and visual reports that make data easy to understand and use.",
+                skill4_title: "Artificial Intelligence",
+                skill4_desc: "Applying AI and machine learning techniques to predict future trends.",
+                about_title: "Who I Am",
+                about_desc1: "I am Sohaib Atef, a data professional passionate about turning complex data into clear, actionable insights. With over 5 years of experience in data analysis and visualization, I help businesses make data-driven decisions.",
+                about_desc2: "I hold a Bachelor's degree in Computer Science, specializing in data analysis and artificial intelligence. I've worked with diverse companies in retail, healthcare, and technology sectors, giving me a comprehensive understanding of different business needs.",
+                about_quote: '"Your data tells a story, my mission is to help you hear and understand it to make better decisions."',
+                view_projects: "View Projects",
+                projects_title: "Recent Projects",
+                projects_subtitle: "My latest work in data analysis and visualization",
+                project1_title: "Sales Dashboard",
+                project1_desc: "Comprehensive Power BI dashboard analyzing sales performance across regions, payment methods, and product categories with interactive visualizations.",
+                project2_title: "Customer Analysis Report",
+                project2_desc: "Advanced Excel analysis identifying top customers by purchasing behavior, with dynamic pivot tables and interactive charts.",
+                project3_title: "Data Cleaning Project",
+                project3_desc: "Comprehensive data cleaning and transformation project using Power Query to standardize and prepare raw datasets for analysis.",
+                data_modeling: "Data Modeling",
+                pivot_tables: "Pivot Tables",
+                customer_analytics: "Customer Analytics",
+                data_cleaning: "Data Cleaning",
+                testimonials_title: "Client Testimonials",
+                testimonials_subtitle: "What clients say about working with me",
+                testimonial1: '"Sohaib\'s work on our sales data analysis was exceptional. The dashboards he created helped us identify new growth opportunities and increase revenue by 25% in the first quarter."',
+                testimonial2: '"The monthly reports Sohaib prepares for us have transformed our decision-making process. The precise analysis and clear visualizations make data understandable for everyone on the team."',
+                client1_name: "Mohamed El-Sayed",
+                client1_position: "Sales Director, Advanced Tech Company",
+                client2_name: "Sarah Abdullah",
+                client2_position: "Marketing Manager, E-commerce Group",
+                contact_title: "Contact Me",
+                contact_subtitle: "Ready to start your project? Get in touch today",
+                address_title: "Address",
+                address: "Cairo, Egypt",
+                phone_title: "Phone",
+                email_title: "Email",
+                form_name: "Full Name",
+                form_email: "Email Address",
+                form_subject: "Subject",
+                form_message: "Message",
+                form_submit: "Send Message",
+                footer_about: "About Sohaib Atef",
+                footer_about_desc: "A data analyst helping businesses uncover hidden insights in their data and transform them into effective business decisions.",
+                footer_links: "Quick Links",
+                footer_services: "Services",
+                service1: "Data Analysis",
+                service2: "Data Visualization",
+                service3: "Data Cleaning",
+                service4: "Dashboards",
+                service5: "Monthly Reports",
+                footer_newsletter: "Newsletter",
+                newsletter_desc: "Subscribe to our newsletter for the latest articles and updates in the world of data analysis.",
+                email_placeholder: "Your Email",
+                subscribe: "Subscribe",
+                copyright: "2025 Sohaib Atef. All Rights Reserved."
+            },
+            zh: {
+                home: "首页",
+                about: "关于",
+                skills: "技能",
+                projects: "项目",
+                contact: "联系",
+                hello: "你好，我是",
+                name: "苏海卜·阿提夫",
+                slogan: "您的数据讲述了一个故事 — — 我帮助您将其变为现实！",
+                hero_desc: "数据分析师，帮助企业发现数据中隐藏的故事并将其转化为可操作的见解。",
+                cta: "开始项目",
+                chat_title: "安排免费咨询",
+                chat_desc: "准备好将您的数据转化为可操作的见解了吗？让我们一起讨论如何帮助您做出推动业务发展的数据驱动决策。",
+                book_consultation: "预约咨询",
+                skills_title: "技能与专长",
+                skills_subtitle: "我将数据转化为宝贵见解的关键技能和专长",
+                skill1_title: "数据分析",
+                skill1_desc: "使用最新工具和技术进行高级数据分析，从您的数据中提取隐藏的见解。",
+                skill2_title: "数据清洗",
+                skill2_desc: "在分析前清理和准备原始数据，确保其准确性和可靠性。",
+                skill3_title: "数据可视化",
+                skill3_desc: "设计交互式仪表板和可视化报告，使数据易于理解和使用。",
+                skill4_title: "人工智能",
+                skill4_desc: "应用AI和机器学习技术预测未来趋势。",
+                about_title: "关于我",
+                about_desc1: "我是苏海卜·阿提夫，一位热衷于将复杂数据转化为清晰、可操作见解的数据专业人士。拥有超过5年的数据分析和可视化经验，我帮助企业做出数据驱动的决策。",
+                about_desc2: "我拥有计算机科学学士学位，专攻数据分析和人工智能。我曾与零售、医疗保健和技术等不同行业的公司合作，这使我对不同的业务需求有了全面的了解。",
+                about_quote: '"您的数据讲述了一个故事，我的使命是帮助您倾听并理解它，以做出更好的决策。"',
+                view_projects: "查看项目",
+                projects_title: "近期项目",
+                projects_subtitle: "我在数据分析和可视化方面的最新作品",
+                project1_title: "销售仪表板",
+                project1_desc: "全面的Power BI仪表板，通过交互式可视化分析跨区域、支付方式和产品类别的销售表现。",
+                project2_title: "客户分析报告",
+                project2_desc: "高级Excel分析，通过动态数据透视表和交互式图表识别购买行为最佳的客户。",
+                project3_title: "数据清洗项目",
+                project3_desc: "使用Power Query进行全面的数据清洗和转换项目，以标准化和准备原始数据集进行分析。",
+                data_modeling: "数据建模",
+                pivot_tables: "数据透视表",
+                customer_analytics: "客户分析",
+                data_cleaning: "数据清洗",
+                testimonials_title: "客户评价",
+                testimonials_subtitle: "客户与我合作的评价",
+                testimonial1: '"苏海卜在我们的销售数据分析方面的工作非常出色。他创建的仪表板帮助我们识别了新的增长机会，并在第一季度将收入提高了25%。"',
+                testimonial2: '"苏海卜为我们准备的月度报告改变了我们的决策过程。精确的分析和清晰的可视化使团队中的每个人都能理解数据。"',
+                client1_name: "穆罕默德·赛义德",
+                client1_position: "销售总监，先进科技公司",
+                client2_name: "莎拉·阿卜杜拉",
+                client2_position: "营销经理，电子商务集团",
+                contact_title: "联系我",
+                contact_subtitle: "准备好开始您的项目了吗？立即联系",
+                address_title: "地址",
+                address: "埃及开罗",
+                phone_title: "电话",
+                email_title: "电子邮件",
+                form_name: "全名",
+                form_email: "电子邮件地址",
+                form_subject: "主题",
+                form_message: "留言",
+                form_submit: "发送留言",
+                footer_about: "关于苏海卜·阿提夫",
+                footer_about_desc: "数据分析师，帮助企业发现数据中隐藏的见解并将其转化为有效的业务决策。",
+                footer_links: "快速链接",
+                footer_services: "服务",
+                service1: "数据分析",
+                service2: "数据可视化",
+                service3: "数据清洗",
+                service4: "仪表板",
+                service5: "月度报告",
+                footer_newsletter: "通讯",
+                newsletter_desc: "订阅我们的通讯，获取数据分析领域的最新文章和更新。",
+                email_placeholder: "您的电子邮件",
+                subscribe: "订阅",
+                copyright: "2025 苏海卜·阿提夫。保留所有权利。"
+            }
+        };
+
+        // Set initial language
+        let currentLang = 'ar';
+
+        // Function to apply translations
+        function applyTranslations(lang) {
+            currentLang = lang;
+            
+            // Update RTL/LTR direction
+            document.body.className = lang === 'ar' ? 'rtl' : 'ltr';
+            
+            // Update all translatable elements
+            document.querySelectorAll('[data-translate]').forEach(element => {
+                const key = element.getAttribute('data-translate');
+                if (translations[lang][key]) {
+                    element.textContent = translations[lang][key];
+                }
+            });
+            
+            // Update active language button
+            document.querySelectorAll('.lang-btn').forEach(btn => {
+                btn.classList.remove('active');
+                if (btn.getAttribute('data-lang') === lang) {
+                    btn.classList.add('active');
+                }
+            });
+        }
+
+        // Language switcher event listeners
+        document.querySelectorAll('.lang-btn').forEach(btn => {
+            btn.addEventListener('click', () => {
+                const lang = btn.getAttribute('data-lang');
+                applyTranslations(lang);
+            });
+        });
+
+        // Mobile menu toggle
+        const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
+        const navLinks = document.querySelector('.nav-links');
+        
+        mobileMenuBtn.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+            mobileMenuBtn.innerHTML = navLinks.classList.contains('active') 
+                ? '<i class="fas fa-times"></i>' 
+                : '<i class="fas fa-bars"></i>';
+        });
+
+        // Navbar scroll effect
+        window.addEventListener('scroll', () => {
+            const nav = document.querySelector('nav');
+            if (window.scrollY > 50) {
+                nav.classList.add('scrolled');
+            } else {
+                nav.classList.remove('scrolled');
+            }
+        });
+
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                // Close mobile menu if open
+                if (navLinks.classList.contains('active')) {
+                    navLinks.classList.remove('active');
+                    mobileMenuBtn.innerHTML = '<i class="fas fa-bars"></i>';
+                }
+                
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    window.scrollTo({
+                        top: target.offsetTop - 70,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+
+        // Form submission
+        const contactForm = document.getElementById('contactForm');
+        if (contactForm) {
+            contactForm.addEventListener('submit', function(e) {
+                e.preventDefault();
+                alert(currentLang === 'ar' ? 'تم إرسال رسالتك بنجاح! سأتواصل معك قريباً.' : 
+                     currentLang === 'en' ? 'Your message has been sent successfully! I will contact you soon.' :
+                     '您的留言已成功发送！我会尽快与您联系。');
+                contactForm.reset();
+            });
+        }
+
+        // Newsletter subscription
+        const newsletterForm = document.querySelector('.newsletter-form button');
+        if (newsletterForm) {
+            newsletterForm.addEventListener('click', function() {
+                alert(currentLang === 'ar' ? 'شكراً على الاشتراك في نشرتنا الإخبارية!' : 
+                     currentLang === 'en' ? 'Thank you for subscribing to our newsletter!' :
+                     '感谢您订阅我们的通讯！');
+            });
+        }
+
+        // Initialize with Arabic
+        applyTranslations('ar');
+    </script>
+</body>
+</html>
