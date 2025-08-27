@@ -2,128 +2,80 @@
 // Language Switcher (Full Version)
 // -------------------------
 
-const langButtons = document.querySelectorAll(".lang-btn");
-let currentLang = "en";
-
-// Detect browser language and set initial language
-function detectBrowserLanguage() {
-    const browserLang = navigator.language || navigator.userLanguage;
-    
-    if (browserLang.startsWith('ar')) {
-        return "ar";
-    } else if (browserLang.startsWith('zh')) {
-        return "zh";
-    } else {
-        return "en"; // default to English
-    }
-}
-
-// Check if user has previously selected a language
-const savedLang = localStorage.getItem('selectedLanguage');
-if (savedLang) {
-    currentLang = savedLang;
-} else {
-    currentLang = detectBrowserLanguage();
-}
-
-// Update active button based on current language
-function updateActiveLangButton() {
-    langButtons.forEach(btn => {
-        btn.classList.remove("active");
-        if (btn.getAttribute("data-lang") === currentLang) {
-            btn.classList.add("active");
-        }
-    });
-}
-
-// Load translations from JSON file inside locales folder
-async function loadTranslations(lang) {
-    try {
-        const response = await fetch(`${lang}.json`);
-        if (!response.ok) throw new Error(`Could not load ${lang}.json`);
-        const translations = await response.json();
-        applyTranslations(translations, lang);
-        updateActiveLangButton();
-        
-        // Update direction and language attribute
-        document.documentElement.dir = (lang === "ar") ? "rtl" : "ltr";
-        document.documentElement.lang = lang;
-        document.body.classList.toggle("rtl", lang === "ar");
-        document.body.classList.toggle("ltr", lang !== "ar");
-        
-        // Save selected language
-        localStorage.setItem('selectedLanguage', lang);
-        updateActiveLangButton();
-    } catch (error) {
-        console.error("Translation error:", error);
-        
-        // Fallback to English if translation file not found
-        if (lang !== "en") {
-            console.log("Falling back to English...");
-            loadTranslations("en");
-        }
-    }
-}
-
 // Apply translations to elements
 function applyTranslations(translations, lang) {
-    // تحديث لغة واتجاه وسم HTML الأساسي
-    document.documentElement.lang = lang;
-    document.documentElement.dir = (lang === "ar") ? "rtl" : "ltr";
-    
-    // تطبيق الترجمات على العناصر
-    document.querySelectorAll("[data-translate]").forEach(el => {
+    // عناصر عادية بالـ data-translate
+    document.querySelectorAll("[data-translate]").forEach((el) => {
         const key = el.getAttribute("data-translate");
         if (translations[key]) {
-            if (el.tagName === "INPUT" || el.tagName === "TEXTAREA") {
-                el.placeholder = translations[key];
-            } else {
-                el.textContent = translations[key];
-            }
+            el.textContent = translations[key];
         }
     });
 
-    // تحديث class لل body
-    document.body.className = lang === "ar" ? "rtl" : "ltr";
+    // Placeholder في الفورم
+    document.querySelectorAll("[data-placeholder]").forEach((el) => {
+        const key = el.getAttribute("data-placeholder");
+        if (translations[key]) {
+            el.setAttribute("placeholder", translations[key]);
+        }
+    });
+
+    // تحديث اتجاه الصفحة (يمين لليسار / شمال لليمين)
+    document.documentElement.setAttribute("lang", lang);
+    document.documentElement.setAttribute("dir", lang === "ar" ? "rtl" : "ltr");
 }
 
-// Handle Language button clicks
-langButtons.forEach(btn => {
-    btn.addEventListener("click", () => {
-        const lang = btn.getAttribute("data-lang");
-        if (lang !== currentLang) {
-            currentLang = lang;
-            loadTranslations(lang);
-        }
-    });
-});
-
-// Load default language on first run
-loadTranslations(currentLang);
-
+// تحميل ملف الترجمة
 async function loadTranslations(lang) {
     try {
         const response = await fetch(`${lang}.json`);
-        console.log('Translation response:', response); // للتdebug
         if (!response.ok) {
-            console.error(`HTTP error! status: ${response.status}`);
             throw new Error(`Could not load ${lang}.json`);
         }
+
         const translations = await response.json();
-        console.log('Loaded translations:', translations); // للتdebug
         applyTranslations(translations, lang);
+
+        // حفظ اللغة المختارة
+        localStorage.setItem("selectedLang", lang);
+
+        // تحديث الزر النشط
+        updateActiveLangButton();
     } catch (error) {
         console.error("Translation error:", error);
-        // Fallback to English
+
+        // fallback للإنجليزي
         if (lang !== "en") {
-            console.log("Falling back to English...");
-            const enResponse = await fetch('en.json');
+            const enResponse = await fetch("en.json");
             const enTranslations = await enResponse.json();
             applyTranslations(enTranslations, "en");
+            localStorage.setItem("selectedLang", "en");
             updateActiveLangButton();
         }
     }
 }
+
+// تحديث الزر النشط
+function updateActiveLangButton() {
+    const selectedLang = localStorage.getItem("selectedLang") || "en";
+    document.querySelectorAll(".lang-btn").forEach((btn) => {
+        btn.classList.toggle("active", btn.getAttribute("data-lang") === selectedLang);
+    });
+}
+
+// تغيير اللغة عند الضغط على زر
+document.querySelectorAll(".lang-btn").forEach((btn) => {
+    btn.addEventListener("click", () => {
+        const lang = btn.getAttribute("data-lang");
+        loadTranslations(lang);
+    });
+});
+
+// تحميل اللغة المحفوظة أو الافتراضية
+window.addEventListener("DOMContentLoaded", () => {
+    const savedLang = localStorage.getItem("selectedLang") || "en";
+    loadTranslations(savedLang);
+});
 
 // -------------------------
 // Mobile Navbar Toggle
@@ -224,6 +176,7 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     });
 
 });
+
 
 
 
