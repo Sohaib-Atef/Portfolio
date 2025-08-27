@@ -251,6 +251,7 @@
             grid-template-columns: 1fr 1fr;
             gap: 4rem;
             align-items: center;
+            max-height: 900px;
         }
 
         .about-image {
@@ -1041,3 +1042,4 @@
             scroll-behavior: smooth;
 
         }
+
