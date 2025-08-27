@@ -1,3 +1,11 @@
+@font-face {
+  font-family: "Qatar2022 Arabic", 'Qatar 2022';
+  src: url("Qatar2022 Arabic.woff2") format("woff2"),
+       url("Qatar2022 Arabic.woff") format("woff");
+  font-weight: normal;
+  font-style: normal;
+}
+
         :root {
         --primary: #5c4226;        
         --primary-light: #E6CCB2;  
@@ -8,7 +16,7 @@
         --white: #ffffff;   
         --shadow: 0 6px 20px rgba(0, 0, 0, 0.08);
         --transition: all 0.3s ease;
-    }
+        }
 
         * {
             margin: 0;
@@ -1041,6 +1049,7 @@
             scroll-behavior: smooth;
 
         }
+
 
 
 
