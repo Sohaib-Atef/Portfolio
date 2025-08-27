@@ -1,5 +1,3 @@
- @import url("http://www.fontstatic.com/f=jazeera,jazeera-light");
-
         :root {
         --primary: #5c4226;        
         --primary-light: #E6CCB2;  
@@ -1043,5 +1041,6 @@
             scroll-behavior: smooth;
 
         }
+
 
 
