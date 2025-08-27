@@ -52,11 +52,6 @@
             direction: ltr;
         }
 
-          i, .fa, .fa-solid, .fa-regular, .fa-brands {
-            font-family: "Font Awesome 6 Free" !important;
-            font-style: normal;
-          }
-
           .section {
             padding: 2rem 0;
         }
@@ -1066,6 +1061,39 @@
             scroll-behavior: smooth;
 
         }
+
+/* إصلاح أيقونات Font Awesome */
+.fa,
+.fa-solid,
+.fa-regular,
+.fa-brands,
+.fas,
+.far,
+.fab {
+  font-family: "Font Awesome 6 Free" !important;
+  font-style: normal !important;
+  font-weight: 400 !important;
+  text-rendering: auto;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.fa-solid,
+.fas {
+  font-weight: 900 !important;
+}
+
+.fa-regular,
+.far {
+  font-weight: 400 !important;
+}
+
+.fa-brands,
+.fab {
+  font-family: "Font Awesome 6 Brands" !important;
+  font-weight: 400 !important;
+}
+
 
 
 
