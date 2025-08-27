@@ -1,22 +1,32 @@
-@font-face {
-  font-family: "Qatar2022Arabic-Medium";
-  src: url("Qatar2022Arabic-Medium.woff2") format("woff2"),
-       url("Qatar2022Arabic-Medium.woff") format("woff");
-  font-weight: normal;
-  font-style: normal;
-}
+          @font-face {
+            font-family: "Qatar2022Arabic-Medium";
+            src: url("Qatar2022Arabic-Medium.woff2") format("woff2"),
+                 url("Qatar2022Arabic-Medium.woff") format("woff");
+            font-weight: normal;
+            font-style: normal;
+          }
+  
+          :root {
+          --primary: #5c4226;        
+          --primary-light: #E6CCB2;  
+          --accent: #bf946a;        
+          --light: #FAF9F6;   
+          --dark: #2B2B2B;  
+          --muted: #7D7D7D;      
+          --white: #ffffff;   
+          --shadow: 0 6px 20px rgba(0, 0, 0, 0.08);
+          --transition: all 0.3s ease;
+          }
 
-        :root {
-        --primary: #5c4226;        
-        --primary-light: #E6CCB2;  
-        --accent: #bf946a;        
-        --light: #FAF9F6;   
-        --dark: #2B2B2B;  
-        --muted: #7D7D7D;      
-        --white: #ffffff;   
-        --shadow: 0 6px 20px rgba(0, 0, 0, 0.08);
-        --transition: all 0.3s ease;
-        }
+          html[dir="rtl"] body {
+            text-align: right;
+            direction: rtl;
+          }
+          
+          html[dir="ltr"] body {
+            text-align: left;
+            direction: ltr;
+          }
 
         * {
             margin: 0;
@@ -1049,6 +1059,7 @@
             scroll-behavior: smooth;
 
         }
+
 
 
 
