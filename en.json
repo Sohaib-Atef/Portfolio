@@ -6,7 +6,7 @@
     "hello": "Hello Innovators! I'm Sohaib",
     "slogan": "A freelance Data Analyst specializing in Power BI & Excel. I help businesses transform messy data into clear dashboards and actionable insights. Whether it's data cleaning, visualization, or KPI tracking, I make sure decision-makers get the clarity they need to act with confidence.",
     "cta": "Start Your Project",
-    "about_title": "About Me",
+    "about_title": "The Analyst Behind Numbers",
     "about_desc1": "After graduating with a degree in Management Information Systems, my curiosity led me to explore computer networks and how data moves across systems.",
     "about_desc2": "During that time, I worked in different roles — from customer service to content management — at international companies serving multiple markets.",
     "about_desc3": "While working closely with managers, I was fascinated by how they constantly refined KPIs and transformed massive amounts of raw data into simple, clear dashboards that supported better decisions.",
@@ -78,4 +78,5 @@
     "email_placeholder": "Your Email",
     "subscribe": "Subscribe",
     "copyright": "2025 Sohaib Atef. All Rights Reserved."
+
 }
