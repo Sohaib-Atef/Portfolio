@@ -1,9 +1,17 @@
           @font-face {
+            font-family: "NeueMontreal-Regular";
+            src: url("NeueMontreal-Regular.woff2") format("woff2"),
+                 url("NeueMontreal-Regular.woff") format("woff");
+            font-weight: normal;
+            font-style: normal;
+          }
+
+          @font-face {
             font-family: "Qatar2022Arabic-Medium";
             src: url("Qatar2022Arabic-Medium.woff2") format("woff2"),
                  url("Qatar2022Arabic-Medium.woff") format("woff");
             font-weight: normal;
-            font-style: normal;
+            font-style: normal
           }
   
           :root {
@@ -25,7 +33,7 @@
           }
           
           :lang(en) {
-            font-family: "Poppins", "Roboto", sans-serif;
+            font-family: "NeueMontreal-Regular";
             direction: ltr;
             text-align: left;
           }
@@ -1096,6 +1104,7 @@
   font-family: "Font Awesome 6 Brands" !important;
   font-weight: 400 !important;
 }
+
 
 
 
