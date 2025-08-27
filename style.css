@@ -252,7 +252,6 @@
             font-size: 3rem;
             color: var(--light);
             font-weight: 900;
-            display: inline-block;
         }
 
         .hero h2 {
@@ -1104,6 +1103,7 @@
   font-family: "Font Awesome 6 Brands" !important;
   font-weight: 400 !important;
 }
+
 
 
 
