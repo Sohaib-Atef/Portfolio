@@ -42,11 +42,17 @@ async function loadTranslations(lang) {
         updateActiveLangButton();
 
         // 👈 هنا بقى إضافة تغيير الاتجاه
+        // تغيير اتجاه الصفحة حسب اللغة
         if (lang === "ar") {
             document.documentElement.setAttribute("dir", "rtl");
+            document.body.classList.remove("ltr");
+            document.body.classList.add("rtl");
         } else {
             document.documentElement.setAttribute("dir", "ltr");
+            document.body.classList.remove("rtl");
+            document.body.classList.add("ltr");
         }
+
 
     } catch (error) {
         console.error("Translation error:", error);
@@ -186,6 +192,7 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     });
 
 });
+
 
 
 
