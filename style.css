@@ -22,7 +22,6 @@
             font-family: "Qatar2022Arabic-Medium";
             direction: rtl;
             text-align: right;
-            letter-spacing: -0.5px
           }
           
           :lang(en) {
@@ -245,7 +244,6 @@
             font-size: 3rem;
             color: var(--light);
             font-weight: 900;
-            letter-spacing: 2px;
             display: inline-block;
         }
 
@@ -1098,6 +1096,7 @@
   font-family: "Font Awesome 6 Brands" !important;
   font-weight: 400 !important;
 }
+
 
 
 
