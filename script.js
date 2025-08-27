@@ -43,6 +43,7 @@ async function loadTranslations(lang) {
         if (!response.ok) throw new Error(`Could not load ${lang}.json`);
         const translations = await response.json();
         applyTranslations(translations, lang);
+        updateActiveLangButton();
         
         // Update direction and language attribute
         document.documentElement.dir = (lang === "ar") ? "rtl" : "ltr";
@@ -119,6 +120,7 @@ async function loadTranslations(lang) {
             const enResponse = await fetch('en.json');
             const enTranslations = await enResponse.json();
             applyTranslations(enTranslations, "en");
+            updateActiveLangButton();
         }
     }
 }
@@ -222,5 +224,6 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     });
 
 });
+
 
 
