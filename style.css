@@ -52,7 +52,12 @@
             direction: ltr;
         }
 
-        .section {
+          i, .fa, .fa-solid, .fa-regular, .fa-brands {
+            font-family: "Font Awesome 6 Free" !important;
+            font-style: normal;
+          }
+
+          .section {
             padding: 2rem 0;
         }
 
@@ -1061,6 +1066,7 @@
             scroll-behavior: smooth;
 
         }
+
 
 
 
