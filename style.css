@@ -1,7 +1,7 @@
 @font-face {
   font-family: "Qatar2022 Arabic", 'Qatar 2022';
-  src: url("Qatar2022 Arabic.woff2") format("woff2"),
-       url("Qatar2022 Arabic.woff") format("woff");
+  src: url("Qatar2022Arabic-Medium.woff2") format("woff2"),
+       url("Qatar2022Arabic-Medium.woff") format("woff");
   font-weight: normal;
   font-style: normal;
 }
@@ -1049,6 +1049,7 @@
             scroll-behavior: smooth;
 
         }
+
 
 
 
