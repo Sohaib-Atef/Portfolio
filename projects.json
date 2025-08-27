@@ -3,16 +3,17 @@
     {
       "title": "Sales Dashboard",
       "images": [
-        "images/Power Query Applied Steps.png",
-        "images/sales-dashboard-2.png"
+        "Power Query Applied Steps.png",
+        "sales-dashboard-2.png"
       ]
     },
     {
       "title": "Customer Analytics",
       "images": [
-        "images/customer-analytics-1.png",
-        "images/customer-analytics-2.png"
+        "customer-analytics-1.png",
+        "customer-analytics-2.png"
       ]
     }
   ]
 }
+
