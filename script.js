@@ -25,7 +25,6 @@ function applyTranslations(translations, lang) {
     document.documentElement.setAttribute("dir", lang === "ar" ? "rtl" : "ltr");
 }
 
-// تحميل ملف الترجمة
 async function loadTranslations(lang) {
     try {
         const response = await fetch(`${lang}.json`);
@@ -42,13 +41,13 @@ async function loadTranslations(lang) {
         // تحديث الزر النشط
         updateActiveLangButton();
 
-        // تغيير الاتجاه
+        // 👈 هنا بقى إضافة تغيير الاتجاه
         if (lang === "ar") {
             document.documentElement.setAttribute("dir", "rtl");
         } else {
             document.documentElement.setAttribute("dir", "ltr");
         }
-        
+
     } catch (error) {
         console.error("Translation error:", error);
 
@@ -59,6 +58,9 @@ async function loadTranslations(lang) {
             applyTranslations(enTranslations, "en");
             localStorage.setItem("selectedLang", "en");
             updateActiveLangButton();
+
+            // 👈 تغيير الاتجاه لو وقع في الإنجليزي
+            document.documentElement.setAttribute("dir", "ltr");
         }
     }
 }
@@ -184,6 +186,7 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     });
 
 });
+
 
 
 
