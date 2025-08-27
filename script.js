@@ -100,6 +100,29 @@ langButtons.forEach(btn => {
 // Load default language on first run
 loadTranslations(currentLang);
 
+async function loadTranslations(lang) {
+    try {
+        const response = await fetch(`./locales/${lang}.json`);
+        console.log('Translation response:', response); // للتdebug
+        if (!response.ok) {
+            console.error(`HTTP error! status: ${response.status}`);
+            throw new Error(`Could not load ${lang}.json`);
+        }
+        const translations = await response.json();
+        console.log('Loaded translations:', translations); // للتdebug
+        applyTranslations(translations, lang);
+    } catch (error) {
+        console.error("Translation error:", error);
+        // Fallback to English
+        if (lang !== "en") {
+            console.log("Falling back to English...");
+            const enResponse = await fetch('./locales/en.json');
+            const enTranslations = await enResponse.json();
+            applyTranslations(enTranslations, "en");
+        }
+    }
+}
+
 // -------------------------
 // Mobile Navbar Toggle
 // -------------------------
@@ -199,3 +222,4 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     });
 
 });
+
