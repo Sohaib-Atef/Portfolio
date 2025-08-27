@@ -41,6 +41,14 @@ async function loadTranslations(lang) {
 
         // تحديث الزر النشط
         updateActiveLangButton();
+
+        // تغيير الاتجاه
+        if (lang === "ar") {
+            document.documentElement.setAttribute("dir", "rtl");
+        } else {
+            document.documentElement.setAttribute("dir", "ltr");
+        }
+        
     } catch (error) {
         console.error("Translation error:", error);
 
@@ -176,6 +184,7 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     });
 
 });
+
 
 
 
