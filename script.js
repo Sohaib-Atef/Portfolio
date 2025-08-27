@@ -53,6 +53,13 @@ async function loadTranslations(lang) {
             document.body.classList.add("ltr");
         }
 
+        if (lang === "ar") {
+            document.documentElement.setAttribute("lang", "ar");
+            document.documentElement.setAttribute("dir", "rtl");
+        } else {
+            document.documentElement.setAttribute("lang", "en");
+            document.documentElement.setAttribute("dir", "ltr");
+        }
 
     } catch (error) {
         console.error("Translation error:", error);
@@ -192,6 +199,7 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     });
 
 });
+
 
 
 
