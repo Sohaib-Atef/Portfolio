@@ -328,11 +328,13 @@
         .edu-card h3 {
             margin: 10px 0 5px;
             font-size: 1.4rem;
+            text-align: center;
         }
             
         .edu-card p {
             font-size: 1rem;
             color: var(--muted);
+            text-align: center;
         }
 
         /* Skills Section */
@@ -394,12 +396,14 @@
             margin: 10px 0;
             font-size: 1.4rem;
             color: #2c2c2c;
+            text-align: center;
         }
             
         .help-card p {
             font-size: 1rem;
             color: var(--muted);
             line-height: 1.5;
+            text-align: center;
         }
 
         /* Projects Section */
@@ -1093,6 +1097,7 @@
   font-family: "Font Awesome 6 Brands" !important;
   font-weight: 400 !important;
 }
+
 
 
 
