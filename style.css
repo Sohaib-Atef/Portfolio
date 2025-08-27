@@ -186,7 +186,7 @@
             box-sizing: border-box;
             border-radius: 30px;
             box-shadow: 0 4px 12px rgba(139, 115, 85, 0.3);
-            background-image: url("images/ApartmentCoder.jpg");
+            background-image: url("ApartmentCoder.jpg");
         }
 
         .hero-image {
@@ -1039,4 +1039,5 @@
 
         html {
             scroll-behavior: smooth;
+
         }
