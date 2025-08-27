@@ -102,7 +102,7 @@ loadTranslations(currentLang);
 
 async function loadTranslations(lang) {
     try {
-        const response = await fetch(`./locales/${lang}.json`);
+        const response = await fetch(`${lang}.json`);
         console.log('Translation response:', response); // للتdebug
         if (!response.ok) {
             console.error(`HTTP error! status: ${response.status}`);
@@ -116,7 +116,7 @@ async function loadTranslations(lang) {
         // Fallback to English
         if (lang !== "en") {
             console.log("Falling back to English...");
-            const enResponse = await fetch('./locales/en.json');
+            const enResponse = await fetch('en.json');
             const enTranslations = await enResponse.json();
             applyTranslations(enTranslations, "en");
         }
@@ -222,4 +222,5 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     });
 
 });
+
 
