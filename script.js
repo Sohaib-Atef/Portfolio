@@ -39,7 +39,7 @@ function updateActiveLangButton() {
 // Load translations from JSON file inside locales folder
 async function loadTranslations(lang) {
     try {
-        const response = await fetch(`./locales/${lang}.json`);
+        const response = await fetch(`${lang}.json`);
         if (!response.ok) throw new Error(`Could not load ${lang}.json`);
         const translations = await response.json();
         applyTranslations(translations, lang);
@@ -197,4 +197,5 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             });
         }
     });
+
 });
