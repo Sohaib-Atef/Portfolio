@@ -178,7 +178,7 @@
             height: 600px;
             width: 80%;
             display: grid;            
-            grid-template-columns: 3fr 2fr;         
+            grid-template-columns: 4fr 2fr;         
             align-items: center;      
             margin: 100px auto 55px auto;             /* يعوض ارتفاع الـ navbar */
             box-sizing: border-box;
@@ -1041,6 +1041,7 @@
             scroll-behavior: smooth;
 
         }
+
 
 
 
