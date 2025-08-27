@@ -21,11 +21,13 @@
           html[dir="rtl"] body {
             text-align: right;
             direction: rtl;
+            font-family: "Qatar2022Arabic-Medium"；
           }
           
           html[dir="ltr"] body {
             text-align: left;
             direction: ltr;
+            font-family: "Poppins", "Roboto", sans-serif;
           }
 
         * {
@@ -1059,6 +1061,7 @@
             scroll-behavior: smooth;
 
         }
+
 
 
 
