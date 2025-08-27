@@ -18,16 +18,16 @@
           --transition: all 0.3s ease;
           }
 
-          html[dir="rtl"] body {
-            text-align: right;
+          :lang(ar) {
+            font-family: "Qatar2022Arabic-Medium";
             direction: rtl;
-            font-family: "Qatar2022Arabic-Medium"；
+            text-align: right;
           }
           
-          html[dir="ltr"] body {
-            text-align: left;
-            direction: ltr;
+          :lang(en) {
             font-family: "Poppins", "Roboto", sans-serif;
+            direction: ltr;
+            text-align: left;
           }
 
         * {
@@ -1061,6 +1061,7 @@
             scroll-behavior: smooth;
 
         }
+
 
 
 
