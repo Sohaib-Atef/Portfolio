@@ -171,7 +171,20 @@
         .logo img {
             width: 150px;
             height: auto;
+            display: none;
         }
+
+          .logo img[lang="en"] {
+            display: block;
+          }
+
+          html[lang="ar"] .logo img[lang="ar"] {
+            display: block;
+          }
+          
+          html[lang="ar"] .logo img[lang="en"] {
+            display: none;
+          }
 
         .nav-links {
             display: flex;
@@ -1077,6 +1090,7 @@
   font-family: "Font Awesome 6 Brands" !important;
   font-weight: 400 !important;
 }
+
 
 
 
