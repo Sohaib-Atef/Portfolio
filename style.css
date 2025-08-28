@@ -197,7 +197,7 @@
             background: none;
             border: none;
             font-size: 1.5rem;
-            color: var(--dark);
+            color: var(--primary);
             cursor: pointer;
         }
 
@@ -917,7 +917,7 @@
             }
 
             .logo img {
-                width: 80px;
+                width: 100px;
             }
 
             .hero {
@@ -1103,6 +1103,7 @@
   font-family: "Font Awesome 6 Brands" !important;
   font-weight: 400 !important;
 }
+
 
 
 
