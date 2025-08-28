@@ -274,7 +274,6 @@
             display: grid;
             grid-template-columns: 1fr 1fr;
             gap: 4rem;
-            align-items: center;
         }
 
         .about-image {
@@ -1103,6 +1102,7 @@
   font-family: "Font Awesome 6 Brands" !important;
   font-weight: 400 !important;
 }
+
 
 
 
