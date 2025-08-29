@@ -345,6 +345,11 @@ html[lang="en"] .hero h2 {
   align-items: center;
 }
 
+html[lang="ar"] .hero-socials i {
+  order:2;
+  margin-bottom: 2px;
+}
+
 /* About Section */
 .about-section {
   display: grid;
