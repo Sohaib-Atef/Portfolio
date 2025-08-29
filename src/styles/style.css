@@ -1287,36 +1287,68 @@ html {
   box-shadow: 0 10px 20px rgba(0,0,0,0.15);
 }
 
-/* Odd items → left */
-.timeline-item:nth-child(odd) {
+/* ================== LTR ================== */
+html[dir="ltr"] .timeline-item:nth-child(odd) {
   left: 0;
   text-align: right;
 }
-
-/* Even items → right */
-.timeline-item:nth-child(even) {
+html[dir="ltr"] .timeline-item:nth-child(even) {
   left: 50%;
+  text-align: left;
+}
+
+/* ================== RTL ================== */
+html[dir="rtl"] .timeline::before {
+  left: auto;
+  right: 50%;
+  transform: translateX(50%);
+}
+
+html[dir="rtl"] .timeline-dot {
+  left: auto;
+  right: 50%;
+  transform: translateX(50%);
+}
+
+html[dir="rtl"] .timeline-item:nth-child(odd) {
+  right: 0;
+  text-align: left;
+}
+html[dir="rtl"] .timeline-item:nth-child(even) {
+  right: 50%;
+  text-align: right;
 }
 
 /* =========== Responsive Styles =========== */
 @media (max-width: 900px) {
-  .timeline::before {
-    left: 30px; /* الخط يتحرك لليسار */
+  html[dir="ltr"] .timeline::before {
+    left: 30px;
+    transform: none;
+  }
+  html[dir="rtl"] .timeline::before {
+    right: 30px;
+    transform: none;
   }
 
   .timeline-item {
-    width: 100%;       /* الكروت تاخد عرض الصفحة */
-    padding-left: 70px; /* space علشان الخط والدوائر */
-    padding-right: 20px;
+    width: 100%;
+    padding-inline-start: 70px;
+    padding-inline-end: 20px;
     left: 0 !important;
-    text-align: left !important;
+    right: 0 !important;
+    text-align: start !important;
   }
 
-  .timeline-dot {
-    left: 30px; /* تبقى متماشية مع الخط */
-    transform: translateX(0);
+  html[dir="ltr"] .timeline-dot {
+    left: 30px;
+    transform: none;
+  }
+  html[dir="rtl"] .timeline-dot {
+    right: 30px;
+    transform: none;
   }
 }
+
 
 
 
