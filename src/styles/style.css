@@ -788,6 +788,18 @@ footer {
   background: var(--primary);
 }
 
+/* للصفحات LTR */
+html[dir="ltr"] .footer-col h3::after {
+  left: 0;
+  right: auto;
+}
+
+/* للصفحات RTL */
+html[dir="rtl"] .footer-col h3::after {
+  right: 0;
+  left: auto;
+}
+
 .footer-col p {
   color: rgba(255, 255, 255, 0.7);
   line-height: 1.8;
