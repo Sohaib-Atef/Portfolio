@@ -199,46 +199,4 @@ document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
 
 
 
-// jQuery(function() {
-//     $('.project-slider').slick({
-//         dots: true,
-//         infinite: true,
-//         slidesToShow: 3,
-//         slidesToScroll: 1,
-//         responsive: [
-//             {
-//                 breakpoint: 1200,
-//                 settings: {
-//                     slidesToShow: 2,
-//                     slidesToScroll: 1,
-//                     dots: true
-//                 }
-//             },
-//             {
-//                 breakpoint: 768,
-//                 settings: {
-//                     slidesToShow: 1,
-//                     slidesToScroll: 1,
-//                     dots: true
-//                 }
-//             },
-//             {
-//                 breakpoint: 480,
-//                 settings: {
-//                     slidesToShow: 1,
-//                     slidesToScroll: 1,
-//                     dots: false
-//                 }
-//             }
-//         ]
-//     });
-
-//     // Set 15px gap between slides
-//     $('.your-class .slick-slide').css('margin', '0 7.5px');
-
-//     // Add padding to parent container for edge gaps
-//     $('.your-class').css('padding', '0 7.5px');
-
-//     // Remove container overflow to show gaps at edges
-//     $('.your-class').css('overflow', 'visible');
-// });
+// End of script.js
