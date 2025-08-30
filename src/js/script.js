@@ -12,25 +12,7 @@ function applyTranslations(translations, lang) {
     }
   });
 
-  // عناصر بداخلها HTML (مثل زر أو عنوان) بالـ data-translate-html
-  document.querySelectorAll("[data-translate-html]").forEach((el) => {
-    const key = el.getAttribute("data-translate-html");
-    if (translations[key]) {
-      el.innerHTML = translations[key];
-    }
-  });
-
-  // عناصر بداخلها خصائص مثل placeholder أو title بالـ data-translate-attr
-  document.querySelectorAll("[data-translate-attr]").forEach((el) => {
-    const attrMap = el.getAttribute("data-translate-attr").split(",");
-    attrMap.forEach((attrKey) => {
-      const [attr, key] = attrKey.split(":");
-      if (translations[key]) {
-        el.setAttribute(attr, translations[key]);
-      }
-    });
-  });
-
+  
   // تحديث اتجاه الصفحة (يمين لليسار / شمال لليمين)
   document.documentElement.setAttribute("lang", lang);
   document.documentElement.setAttribute("dir", lang === "ar" ? "rtl" : "ltr");
