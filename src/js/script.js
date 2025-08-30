@@ -12,13 +12,21 @@ function applyTranslations(translations, lang) {
     }
   });
 
-  // Placeholder في الفورم
-  document.querySelectorAll("[data-placeholder]").forEach((el) => {
-    const key = el.getAttribute("data-placeholder");
-    if (translations[key]) {
-      el.setAttribute("placeholder", translations[key]);
+function translatePage(languageData) {
+  document.querySelectorAll("[data-translate]").forEach(el => {
+    let key = el.getAttribute("data-translate");
+    if (languageData[key]) {
+      // لو العنصر input أو textarea -> غير البليس هولدر
+      if (el.tagName === "INPUT" || el.tagName === "TEXTAREA") {
+        el.setAttribute("placeholder", languageData[key]);
+      } 
+      // لو عنصر تاني -> غير النص العادي
+      else {
+        el.textContent = languageData[key];
+      }
     }
   });
+}
 
   // تحديث اتجاه الصفحة (يمين لليسار / شمال لليمين)
   document.documentElement.setAttribute("lang", lang);
