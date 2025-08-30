@@ -6,13 +6,20 @@
 function applyTranslations(translations, lang) {
   // عناصر عادية بالـ data-translate
   document.querySelectorAll("[data-translate]").forEach((el) => {
-    const key = els.getAttribute("data-translate");
+    const key = el.getAttribute("data-translate");
     if (translations[key]) {
       el.textContent = translations[key];
     }
   });
 
-  
+  // Placeholder في الفورم
+  document.querySelectorAll("[data-placeholder]").forEach((el) => {
+    const key = el.getAttribute("data-placeholder");
+    if (translations[key]) {
+      el.setAttribute("placeholder", translations[key]);
+    }
+  });
+
   // تحديث اتجاه الصفحة (يمين لليسار / شمال لليمين)
   document.documentElement.setAttribute("lang", lang);
   document.documentElement.setAttribute("dir", lang === "ar" ? "rtl" : "ltr");
@@ -199,4 +206,46 @@ document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
 
 
 
-// End of script.js
+// jQuery(function() {
+//     $('.project-slider').slick({
+//         dots: true,
+//         infinite: true,
+//         slidesToShow: 3,
+//         slidesToScroll: 1,
+//         responsive: [
+//             {
+//                 breakpoint: 1200,
+//                 settings: {
+//                     slidesToShow: 2,
+//                     slidesToScroll: 1,
+//                     dots: true
+//                 }
+//             },
+//             {
+//                 breakpoint: 768,
+//                 settings: {
+//                     slidesToShow: 1,
+//                     slidesToScroll: 1,
+//                     dots: true
+//                 }
+//             },
+//             {
+//                 breakpoint: 480,
+//                 settings: {
+//                     slidesToShow: 1,
+//                     slidesToScroll: 1,
+//                     dots: false
+//                 }
+//             }
+//         ]
+//     });
+
+//     // Set 15px gap between slides
+//     $('.your-class .slick-slide').css('margin', '0 7.5px');
+
+//     // Add padding to parent container for edge gaps
+//     $('.your-class').css('padding', '0 7.5px');
+
+//     // Remove container overflow to show gaps at edges
+//     $('.your-class').css('overflow', 'visible');
+// });
