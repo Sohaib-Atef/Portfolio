@@ -1048,6 +1048,7 @@ html[dir="rtl"] .footer-col h3::after {
     align-items: end;
     box-shadow: none;
     background-position-x: right;
+    background-size: cover;
   }
 
   .hero-title {
