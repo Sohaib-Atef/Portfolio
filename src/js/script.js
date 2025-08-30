@@ -6,27 +6,30 @@
 function applyTranslations(translations, lang) {
   // عناصر عادية بالـ data-translate
   document.querySelectorAll("[data-translate]").forEach((el) => {
-    const key = el.getAttribute("data-translate");
+    const key = els.getAttribute("data-translate");
     if (translations[key]) {
       el.textContent = translations[key];
     }
   });
 
-function translatePage(languageData) {
-  document.querySelectorAll("[data-translate]").forEach(el => {
-    let key = el.getAttribute("data-translate");
-    if (languageData[key]) {
-      // لو العنصر input أو textarea -> غير البليس هولدر
-      if (el.tagName === "INPUT" || el.tagName === "TEXTAREA") {
-        el.setAttribute("placeholder", languageData[key]);
-      } 
-      // لو عنصر تاني -> غير النص العادي
-      else {
-        el.textContent = languageData[key];
-      }
+  // عناصر بداخلها HTML (مثل زر أو عنوان) بالـ data-translate-html
+  document.querySelectorAll("[data-translate-html]").forEach((el) => {
+    const key = el.getAttribute("data-translate-html");
+    if (translations[key]) {
+      el.innerHTML = translations[key];
     }
   });
-}
+
+  // عناصر بداخلها خصائص مثل placeholder أو title بالـ data-translate-attr
+  document.querySelectorAll("[data-translate-attr]").forEach((el) => {
+    const attrMap = el.getAttribute("data-translate-attr").split(",");
+    attrMap.forEach((attrKey) => {
+      const [attr, key] = attrKey.split(":");
+      if (translations[key]) {
+        el.setAttribute(attr, translations[key]);
+      }
+    });
+  });
 
   // تحديث اتجاه الصفحة (يمين لليسار / شمال لليمين)
   document.documentElement.setAttribute("lang", lang);
