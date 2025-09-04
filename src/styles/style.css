@@ -369,6 +369,7 @@ html[lang="ar"] .hero-socials i {
   height: 100%;
   object-fit: cover;
   display: block;
+  object-position: top;
 }
 
 .about-content h2 {
