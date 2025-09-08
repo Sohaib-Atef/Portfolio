@@ -363,6 +363,7 @@ html[lang="ar"] .hero-socials i {
   box-shadow: var(--shadow);
   height: 100%;
   max-height: 500px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
 }
 
 .about-image img {
